@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SurfaceCheckClass</class>
+ <widget class="QMainWindow" name="SurfaceCheckClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>528</width>
+    <height>1352</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SurfaceCheck</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QFormLayout" name="formLayout">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <property name="rowWrapPolicy">
+     <enum>QFormLayout::DontWrapRows</enum>
+    </property>
+    <item row="1" column="1">
+     <layout class="QVBoxLayout" name="targetLayout" stretch="6,1,2">
+      <property name="spacing">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="HImageWidget" name="TargetImage" native="true"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="targetTitle">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;检测对象&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;需要检测的目标&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSelectTarget">
+        <property name="text">
+         <string>选择检测对象</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1">
+     <layout class="QVBoxLayout" name="resultLayout" stretch="5,1,1">
+      <property name="spacing">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="HImageWidget" name="CheckResult" native="true"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="resultTitle">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;检测结果&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;点击按键进行检测&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="BtnCheck">
+        <property name="text">
+         <string>检测</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="modelLayout" stretch="6,1,2">
+      <property name="spacing">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="HImageWidget" name="ModelImage" native="true"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="titleOfModel">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;模板图像&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;检测的基准图像&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSelectModel">
+        <property name="text">
+         <string>选择模板图像</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>HImageWidget</class>
+   <extends>QWidget</extends>
+   <header>HImageWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="SurfaceCheck.qrc"/>
+ </resources>
+ <connections/>
+</ui>
