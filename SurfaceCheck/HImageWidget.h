@@ -52,9 +52,6 @@ signals:
 
 private slots :
 	void OnSelectImage();
-	void OnZoomInImage();
-	void OnZoomOutImage();
-	void OnPressImage();
 
 private:
     HalconCpp::HTuple m_WindowHandle;

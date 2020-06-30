@@ -186,22 +186,27 @@ void HImageWidget::mouseMoveEvent(QMouseEvent *event)
 {
 	HalconCpp::HTuple mouseX, mouseY, mousePressed;
 	HalconCpp::HTuple width, height;
-	HalconCpp::GetMpositionSubPix(m_WindowHandle,&mouseX,&mouseY,&mousePressed);
-
-	m_newX = mouseX.D();
-	m_newY = mouseY.D();
-	m_motionX = m_newX - m_oldX;
-	m_motionY = m_newY - m_oldY;
-
-	moveImage(m_motionX, m_motionY,&m_moveBeginX,&m_moveBeginY,&m_moveEndX,&m_moveEndY);
-
+	try
+	{
+		HalconCpp::GetMpositionSubPix(m_WindowHandle,&mouseX,&mouseY,&mousePressed);
 	
-
-	HalconCpp::SetPart(m_WindowHandle, m_moveBeginX, m_moveBeginY, m_moveEndX, m_moveEndY);
-	HalconCpp::FlushBuffer(m_WindowHandle);
-	HalconCpp::ClearWindow(m_WindowHandle);
-	HalconCpp::DispImage(m_imageObj, m_WindowHandle);
-
+		m_newX = mouseX.D();
+		m_newY = mouseY.D();
+		m_motionX = m_newX - m_oldX;
+		m_motionY = m_newY - m_oldY;
+	
+		moveImage(m_motionX, m_motionY,&m_moveBeginX,&m_moveBeginY,&m_moveEndX,&m_moveEndY);
+	
+		
+	
+		HalconCpp::SetPart(m_WindowHandle, m_moveBeginX, m_moveBeginY, m_moveEndX, m_moveEndY);
+		HalconCpp::ClearWindow(m_WindowHandle);
+		HalconCpp::DispImage(m_imageObj, m_WindowHandle);
+	}
+	catch (HalconCpp::HException e)
+	{
+		return;
+	}
 	update();
 }
 
@@ -225,38 +230,6 @@ void HImageWidget::OnSelectImage()
 	update();
 
 }
-
-
-void HImageWidget::OnZoomInImage()
-{
-	ZoomValue += 0.05;
-
-	HalconCpp::ZoomImageFactor(m_imageObj,&m_imageZoom,ZoomValue,ZoomValue,"nearest_neighbor");
-	
-	update();
-}
-
-void HImageWidget::OnZoomOutImage()
-{
-	ZoomValue -= 0.05;
-	
-	if (ZoomValue <= 0)
-	{
-		ZoomValue = 0.05;	
-		return;
-	}
-	HalconCpp::ZoomImageFactor(m_imageObj, &m_imageZoom, ZoomValue, ZoomValue, "nearest_neighbor");
-	update();
-}
-
-void HImageWidget::OnPressImage()
-{
-	ZoomValue = 1.0;
-	XPInterval = 0.0;
-	YPInterVal = 0.0;
-	update();
-}
-
 
 
 void HImageWidget::displayZoomImage(double mode, double mouseRow, double mouseCol)
